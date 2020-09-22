@@ -25,7 +25,6 @@ function DnD(canvas, interactor) {
           let res = getMousePosition(this.canvas,evt);
           this.finalX = res.x;
           this.finalY = res.y;
-          console.log("moved: x= " + this.finalX + ", y= " + this.finalY);
 
           interactor.onInteractionUpdate(this);
       }

@@ -19,6 +19,8 @@ function Pencil(ctx, drawing, canvas) {
 		} else {
 			this.currentShape = new Rectangle(drag.initX, drag.initY, 0, 0, this.currLineWidth, this.currColour);
 		}
+		console.log(this.currColour);
+		console.log(this.currLineWidth);
 		//this.currentShape.paint(ctx);
 	}.bind(this);
 
@@ -55,19 +57,19 @@ function Pencil(ctx, drawing, canvas) {
 	}.bind(this);
 
 	this.changeEpaisseur = function(val) {
-		this.currLineWidth = parseInt(val);
+		this.currLineWidth = val.target.value;
 	}.bind(this);
 
 	this.changeColor = function(col) {
-		this.currColour = col;
+		this.currColour = col.target.value;
 	}.bind(this);
 
 	document.getElementById("butRect").addEventListener("click", this.drawRect, false);
 	document.getElementById("butLine").addEventListener("click", this.drawLine, false);
 	var spinner = document.getElementById("spinnerWidth");
-	spinner.addEventListener("keyup", this.changeEpaisseur(spinner.value), false);
+	spinner.addEventListener("change", this.changeEpaisseur, false);
 	var color = document.getElementById("colour");
-	color.addEventListener("change", this.changeColor(color.value), false);
+	color.addEventListener("change", this.changeColor, false);
 };
 
 
